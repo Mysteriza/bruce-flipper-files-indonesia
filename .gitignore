@@ -1,0 +1,25 @@
+# Local/sensitive copies (webhooks, tokens, dll)
+*.local.*
+
+# Windows
+desktop.ini
+Thumbs.db
+ehthumbs.db
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.sublime-workspace
+
+# OS junk
+$RECYCLE.BIN/
+System Volume Information/

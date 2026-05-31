@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bruce - Login</title>
+  <link rel="icon" href="data:,">
+  <style>
+    :root {
+      --color: #ff3ec8;
+      --background: #12121e;
+      --surface: #1a1a2e;
+      --border: color-mix(in srgb, var(--color) 25%, #333);
+      --radius: 6px;
+      --font: "JetBrains Mono", "Fira Code", "Cascadia Code", "DejaVu Sans Mono", "Consolas", monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--background);
+      font-family: var(--font);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .login-card {
+      width: 340px;
+      max-width: 92vw;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: var(--surface);
+      padding: 32px 28px;
+      text-align: center;
+      animation: fadeIn 0.25s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .login-logo {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: var(--color);
+      margin-bottom: 4px;
+    }
+    .login-title {
+      font-size: 0.85rem;
+      color: var(--color);
+      opacity: 0.6;
+      margin-bottom: 24px;
+    }
+    .login-body { text-align: left; }
+    .login-body label {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--color);
+      opacity: 0.7;
+      margin-bottom: 4px;
+    }
+    .login-body input {
+      width: 100%;
+      padding: 8px 10px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--color);
+      font-family: var(--font);
+      font-size: 0.85rem;
+      outline: 0;
+      transition: border-color 0.15s;
+      margin-bottom: 16px;
+    }
+    .login-body input:focus {
+      border-color: var(--color);
+      box-shadow: 0 0 0 2px color-mix(in srgb, var(--color) 20%, transparent);
+    }
+    .login-btn {
+      width: 100%;
+      margin-top: 8px;
+      padding: 10px 0;
+      font-family: var(--font);
+      font-size: 0.85rem;
+      border: 1px solid var(--color);
+      background: transparent;
+      color: var(--color);
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .login-btn:hover {
+      background: var(--color);
+      color: var(--background);
+    }
+    .login-error {
+      margin-top: 14px;
+      font-size: 0.78rem;
+      color: #ff4444;
+      text-align: center;
+      display: none;
+    }
+    .login-error.show { display: block; }
+    .login-error.success { color: #22c55e; }
+    .login-hint {
+      margin-top: 20px;
+      font-size: 0.7rem;
+      color: var(--color);
+      opacity: 0.4;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-card">
+    <div class="login-logo">BRUCE</div>
+    <div class="login-title">WebUI Login</div>
+    <form class="login-body" action="/login" method="POST">
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" autocomplete="username">
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" autocomplete="current-password">
+      <button class="login-btn" type="submit">Log In</button>
+      <div class="login-error" id="login-error"></div>
+    </form>
+    <div class="login-hint">Default: admin / bruce</div>
+  </div>
+  <script>
+    (function() {
+      var err = document.getElementById("login-error");
+      if (window.location.search.indexOf("failed") !== -1) {
+        err.textContent = "Invalid username or password.";
+        err.classList.add("show");
+      } else if (window.location.search.indexOf("loggedout") !== -1) {
+        err.textContent = "You have been logged out.";
+        err.classList.add("show");
+        err.classList.add("success");
+      }
+      document.getElementById("username").focus();
+    })();
+  </script>
+</body>
+</html>

